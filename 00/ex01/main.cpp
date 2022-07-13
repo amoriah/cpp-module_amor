@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 11:44:10 by amoriah           #+#    #+#             */
-/*   Updated: 2022/07/12 14:26:15 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/07/13 12:39:06 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ int	main()
 	std::cout << " " << std::endl;
 	std::cout << "What would you like: ADD, SEARCH or EXIT? Go ahead!" << std::endl;
 	do {
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
+		if (std::cin.eof())
+			cmd = "exit";
 		if (cmd == "ADD" || cmd == "add")
-		{
 			book.add_contact();
-			book.i++;
-		}
 		else if (cmd == "SEARCH" || cmd == "search")
 			book.search_contact();
 		else if (cmd == "EXIT" || cmd == "exit")

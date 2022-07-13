@@ -3,11 +3,13 @@
 
 # include <string>
 # include <iostream>
+# include <cstdlib>
+# include <iomanip>
 # include "PhoneBook.hpp"
 
 class Contact
 {
-	std::string	persData[5];
+	// std::string	persData[5];
 // private:
 public:
 	std::string	FirstName;
