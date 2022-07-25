@@ -6,15 +6,15 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 11:44:03 by amoriah           #+#    #+#              #
-#    Updated: 2022/07/11 17:21:57 by amoriah          ###   ########.fr        #
+#    Updated: 2022/07/25 11:51:34 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME	=	PhoneBook
 
 SRC		=	main.cpp commands.cpp
 
 OBJ		=	${SRC:.cpp=.o}
-
-NAME	=	PhoneBook
 
 HEADER	=	PhoneBook.hpp Contact.hpp
 

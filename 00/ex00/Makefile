@@ -1,27 +1,42 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
+#    Updated: 2022/07/25 11:53:48 by amoriah          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=	megaphone
 
 SRC		=	megaphone.cpp
 
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
-
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
+OBJ		=	${SRC:.cpp=.o}
 
 CC		= 	g++
 
-.PHONY	:	all clean fclean re
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-all		:		$(NAME)
+RM		=	rm -f
 
-$(NAME)	:	$(OBJ)
-			@ar rcs $(NAME) $?
+.PHONY:	all clean fclean re
 
-%.o		:	
+.cpp.o:		
 			$(CC) $(FLAGS) -c $< -o $@
+			
+all:		$(NAME)
 
-clean	:	
-			@rm - f$(OBJ)
+$(NAME):	$(OBJ)
+			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
-fclean	:	
-			@rm -f $(NAME)
 
-re		:	fclean all
+clean:	
+			@$(RM) $(OBJ)
+
+fclean:		clean
+			@$(RM) $(NAME)
+
+re:	fclean all

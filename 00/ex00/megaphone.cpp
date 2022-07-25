@@ -3,8 +3,8 @@
 
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
+	int			i;
+	size_t		j;
 
 	i = 0;
 	j = -1;
