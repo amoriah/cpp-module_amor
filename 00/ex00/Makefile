@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
+#    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/07/25 11:53:48 by amoriah          ###   ########.fr        #
+#    Updated: 2022/07/26 11:34:16 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM		=	rm -f
 .PHONY:	all clean fclean re
 
 .cpp.o:		
-			$(CC) $(FLAGS) -c $< -o $@
+			@$(CC) $(FLAGS) -c $< -o $@
 			
 all:		$(NAME)
 

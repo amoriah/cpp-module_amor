@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 11:44:10 by amoriah           #+#    #+#             */
-/*   Updated: 2022/07/13 12:39:06 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:56:31 by yono             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+//вопрос по модификаторам доступа, мне не нужен privet
 int	main()
 {
 	PhoneBook	book;
 	std::string	cmd;
-	// int j = -1;
 
 	book.i = 0;
 	std::cout << " " << std::endl;
@@ -38,17 +38,6 @@ int	main()
 			std::cout << "Oops, PhoneBook is so dummy, doesn't know such command, try again. " << std::endl;		
 		std::cout << "Write a command: ADD, SEARCH or EXIT? Go ahead!" << std::endl;
 	} while (cmd != "EXIT" || cmd != "exit");
-	// while(++j < book.i)
-	// {
-	// 	std::cout << " " << std::endl;
-	// 	std::cout << j << std::endl;
-	// 	std::cout << "First name: " << book.cnt[j].FirstName << std::endl;
-	// 	std::cout << "Last name: " << book.cnt[j].LastName << std::endl;
-	// 	std::cout << "Nick name: " << book.cnt[j].NickName << std::endl;
-	// 	std::cout << "Phone number: " << book.cnt[j].PhoneNumber << std::endl;
-	// 	std::cout << "Darkest secret: " << book.cnt[j].DarkestSecret << std::endl;
-		
-	// }
 	std::cout << "Bye, my Lil pumpkin!" << std::endl;
 		return 0;
 }

@@ -9,8 +9,10 @@
 
 class PhoneBook
 {
-public:
+private:
 	Contact cnt[8];
+	
+public:
 	int		i;
 	int		count;
 	

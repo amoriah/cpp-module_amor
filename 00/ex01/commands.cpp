@@ -23,10 +23,6 @@ void	PhoneBook::add_contact()
 
 void	PhoneBook::display_contact(int i)
 {
-	// std::string sep;
-
-	// sep = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n";
-	// std::cout << sep;
 	std::cout << "|" << std::setw(15) << i + 1;
 	if (this->cnt[i].FirstName.length() > 15)
 		std::cout << "|" << std::setw(16 - this->cnt[i].FirstName.length()) << this->cnt[i].FirstName.substr(0, 14) << ".";
@@ -41,33 +37,11 @@ void	PhoneBook::display_contact(int i)
 		std::cout << "|" << std::setw(16 - this->cnt[i].NickName.length()) << this->cnt[i].NickName.substr(0, 14) << ".|\n";
 	else
 		std::cout << "|" << std::setw(15) << this->cnt[i].NickName << "|\n";
-	// std::cout << std::endl;
 }
 
 void	PhoneBook::display_sheet()
 {
-	// std::string sep;
-
-	// sep = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
-
-	// std::cout << "________________________________________________________________" << std::endl;
 	std::cout << "|          Index|     First name|      Last name|      Nick name|" << std::endl;
-	// std::cout << sep << std::endl;
-	// std::cout << "|" << std::setw(15) << this->i;
-	// if (this->cnt[i].FirstName.length() > 15)
-	// 	std::cout << "|" << std::setw(16 - this->cnt[i].FirstName.length()) << this->cnt[i].FirstName.substr(0, 14) << ".";
-	// else
-	// 	std::cout << "|" << std::setw(15) << this->cnt[i].FirstName;
-	// if (this->cnt[i].LastName.length() > 15)
-	// 	std::cout << "|" << std::setw(16 - this->cnt[i].LastName.length()) << this->cnt[i].LastName.substr(0, 14) << ".";
-	// else
-	// 	std::cout << "|" << std::setw(15) << this->cnt[i].LastName;
-	
-	// if (this->cnt[i].NickName.length() > 15)
-	// 	std::cout << "|" << std::setw(16 - this->cnt[i].NickName.length()) << this->cnt[i].NickName.substr(0, 14) << ".|\n";
-	// else
-	// 	std::cout << "|" << std::setw(15) << this->cnt[i].NickName << "|\n";
-	// std::cout << sep << std::endl;
 }
 
 void	PhoneBook::search_contact()
@@ -80,7 +54,6 @@ void	PhoneBook::search_contact()
 	while (++this->i < this->count)
 		display_contact(this->i);
 	this->i = 1;
-	// std::cout << "count = " << this->count << std::endl;
 	std::cout << "Enter contact number: ";
 	std::getline(std::cin, num);
 	if (std::cin.eof())
@@ -95,10 +68,10 @@ void	PhoneBook::search_contact()
 	while (std::atoi(num.c_str()) != this->i && this->i <= this->count)
 		this->i++;
 	std::cout << " " << std::endl;
-	// 	std::cout << j << std::endl;
 	std::cout << "First name: " << PhoneBook::cnt[this->i - 1].FirstName << std::endl;
 	std::cout << "Last name: " << PhoneBook::cnt[this->i - 1].LastName << std::endl;
 	std::cout << "Nick name: " << PhoneBook::cnt[this->i - 1].NickName << std::endl;
 	std::cout << "Phone number: " << PhoneBook::cnt[this->i - 1].PhoneNumber << std::endl;
 	std::cout << "Darkest secret: " << PhoneBook::cnt[this->i - 1].DarkestSecret << std::endl;
+	std::cout << " " << std::endl;
 }

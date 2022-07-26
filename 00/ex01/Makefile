@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
+#    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 11:44:03 by amoriah           #+#    #+#              #
-#    Updated: 2022/07/25 11:51:34 by amoriah          ###   ########.fr        #
+#    Updated: 2022/07/26 11:36:59 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FLAGS	=	-Wall -Wextra -Werror -std=c++98
 .PHONY:	all clean fclean re
 
 .cpp.o:		
-			$(CC) $(FLAGS) -c $< -o $@
+			@$(CC) $(FLAGS) -c $< -o $@
 			
 all:	$(NAME)
 
