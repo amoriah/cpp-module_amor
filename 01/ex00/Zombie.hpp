@@ -19,6 +19,7 @@ private:
 public:
 	Zombie();
 	Zombie(string name);
+	~Zombie();
 	string	getName() const;
 	void	announce(void) const;
 
@@ -26,5 +27,6 @@ public:
 
 Zombie	*newZombie(string name);
 void	randomChump(string name);
+Zombie *zombieHorde(int N, string name);
 
 #endif 
