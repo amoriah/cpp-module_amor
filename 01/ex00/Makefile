@@ -1,6 +1,6 @@
 NAME	=	Zombie
 
-SRC		=	main.cpp Zombie.cpp newZombie.cpp
+SRC		=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 OBJ		=	${SRC:.cpp=.o}
 
@@ -21,7 +21,6 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ) $(HEADER)
 			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
-
 
 clean:	
 			@$(RM) $(OBJ)

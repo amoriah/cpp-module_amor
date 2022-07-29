@@ -6,27 +6,26 @@
 # include <iomanip>
 # include <cstdlib>
 
-using std::string;
-using std::endl;
-using std::cout;
-using std::cin;
-
 class	Zombie 
 {
 private:
-	string name;
+	std::string name;
 
 public:
-	Zombie();
-	Zombie(string name);
-	~Zombie();
-	string	getName() const;
+	Zombie(std::string name)
+	{
+		// std::cout << "ctor" << std::endl;
+		this->name = name;
+	}
+	~Zombie()
+	{
+		// std::cout << "dtor" << std::endl;		
+	}
+	std::string	getName() const;
 	void	announce(void) const;
-
 };
 
-Zombie	*newZombie(string name);
-void	randomChump(string name);
-Zombie *zombieHorde(int N, string name);
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif 
