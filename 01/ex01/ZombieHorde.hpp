@@ -1,5 +1,5 @@
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef ZOMBIEHORDE_H
+# define ZOMBIEHORDE_H
 
 #include <iostream>
 #include <string>

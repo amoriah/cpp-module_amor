@@ -4,7 +4,7 @@ SRC		=	main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJ		=	${SRC:.cpp=.o}
 
-HEADER	=	Zombie.hpp
+HEADER	=	ZombieHorde.hpp
 
 CC		= 	g++
 

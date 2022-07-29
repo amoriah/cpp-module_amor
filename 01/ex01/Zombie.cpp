@@ -1,4 +1,4 @@
-#include "Zombie.hpp"
+#include "ZombieHorde.hpp"
 
 Zombie::Zombie(string name)
 {
