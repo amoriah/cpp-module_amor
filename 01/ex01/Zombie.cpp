@@ -1,13 +1,16 @@
-#include "ZombieHorde.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 18:55:14 by yono              #+#    #+#             */
+/*   Updated: 2022/07/29 18:56:03 by yono             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-Zombie::Zombie(std::string name)
-{
-	this->name = name;
-}
-Zombie::Zombie()
-{
-	std::cout << getName() << " come back to live!" << std::endl;
-}
+#include "ZombieHorde.hpp"
 
 std::string	Zombie::getName() const
 {
@@ -19,12 +22,7 @@ void	Zombie::announce() const
 	std::cout << getName() << ": " << "BraiiiiiiiiiiinnnnzzzZ..." << std::endl;
 }
 
-Zombie::~Zombie()
+void	Zombie::setName(std::string name)
 {
-	std::cout << getName() << " is really dead" << std::endl;
-}
-
-Zombie *newZombie(std::string name)
-{
-	return(new Zombie(name));
+	this->name = name;
 }
