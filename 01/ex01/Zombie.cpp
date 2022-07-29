@@ -1,30 +1,30 @@
 #include "ZombieHorde.hpp"
 
-Zombie::Zombie(string name)
+Zombie::Zombie(std::string name)
 {
 	this->name = name;
 }
 Zombie::Zombie()
 {
-	cout << getName() << " come back to live!" << endl;
+	std::cout << getName() << " come back to live!" << std::endl;
 }
 
-string	Zombie::getName() const
+std::string	Zombie::getName() const
 {
 	return(this->name);
 }
 
 void	Zombie::announce() const
 {
-	cout << getName() << ": " << "BraiiiiiiiiiiinnnnzzzZ..." << endl;
+	std::cout << getName() << ": " << "BraiiiiiiiiiiinnnnzzzZ..." << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	cout << getName() << " is really dead" << endl;
+	std::cout << getName() << " is really dead" << std::endl;
 }
 
-Zombie *newZombie(string name)
+Zombie *newZombie(std::string name)
 {
 	return(new Zombie(name));
 }

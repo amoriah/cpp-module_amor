@@ -4,24 +4,19 @@
 #include <iostream>
 #include <string>
 
-using std::string;
-using std::cout;
-using std::cin;
-using std::endl;
-
 class Zombie
 {
 private:
-	string name;
+	std::string name;
 public:
 	Zombie();
 	~Zombie();
-	Zombie(string name);
-	string	getName() const;
+	Zombie(std::string name);
+	std::string	getName() const;
 	void	announce() const;
 };
 
-Zombie	*newZombie(string name);
+Zombie	*newZombie(std::string name);
 // void	randomChump(string name);
 
 #endif

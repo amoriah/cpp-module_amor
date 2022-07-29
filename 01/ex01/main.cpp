@@ -1,6 +1,6 @@
 #include "ZombieHorde.hpp"
 
-Zombie *zombieHorde(int N, string name)
+Zombie *zombieHorde(int N, std::string name)
 {
 	Zombie *horde;
 	(void)name;
@@ -22,7 +22,7 @@ int	main()
 	delete zom2;
 	Zombie *horde;
 	horde = zombieHorde(10, "man");
-	cout << horde[0].name << endl;
+	std::cout << horde[0].name << std::endl;
 
 }
 
