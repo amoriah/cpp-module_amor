@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 13:51:24 by amoriah           #+#    #+#             */
+/*   Updated: 2022/07/29 13:51:25 by amoriah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ZOMBIE_H
 # define ZOMBIE_H
 
@@ -14,12 +26,11 @@ private:
 public:
 	Zombie(std::string name)
 	{
-		// std::cout << "ctor" << std::endl;
 		this->name = name;
 	}
 	~Zombie()
 	{
-		// std::cout << "dtor" << std::endl;		
+		std::cout << this->name << " died" << std::endl;
 	}
 	std::string	getName() const;
 	void	announce(void) const;
