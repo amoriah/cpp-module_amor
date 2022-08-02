@@ -9,12 +9,12 @@
 
 class Contact
 {
+private:
+	std::string info[5];
+
 public:
-	std::string	FirstName;
-	std::string	LastName;
-	std::string	NickName;
-	std::string	PhoneNumber;
-	std::string	DarkestSecret;
+	void		setInfo(int i, std::string value);
+	std::string retInfo(int i);
 };
 
 #endif

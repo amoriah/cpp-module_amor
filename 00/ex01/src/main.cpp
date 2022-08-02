@@ -6,25 +6,28 @@
 /*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 11:44:10 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/01 17:42:56 by yono             ###   ########.fr       */
+/*   Updated: 2022/08/02 16:57:59 by yono             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-//вопрос по модификаторам доступа, мне не нужен privet
-//геттеры и сеттеры???
+static void	printHead()
+{
+	std::cout << " " << std::endl;
+	std::cout << " |--------------------------PHONEBOOK---------------------------|" << std::endl;
+	std::cout << " " << std::endl;
+	std::cout << "What would you like: ADD, SEARCH or EXIT? Go ahead!" << std::endl;	
+}
+
 int	main()
 {
 	PhoneBook	book;
 	std::string	cmd;
 
 	book.i = 0;
-	std::cout << " " << std::endl;
-	std::cout << " |--------------------------PHONEBOOK---------------------------|" << std::endl;
-	std::cout << " " << std::endl;
-	std::cout << "What would you like: ADD, SEARCH or EXIT? Go ahead!" << std::endl;
+	printHead();
 	do {
 		std::getline(std::cin, cmd);
 		if (std::cin.eof())
