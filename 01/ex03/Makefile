@@ -6,7 +6,7 @@
 #    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 12:15:25 by yono              #+#    #+#              #
-#    Updated: 2022/08/01 15:57:33 by yono             ###   ########.fr        #
+#    Updated: 2022/08/03 17:27:29 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,21 +29,21 @@ OBJ		=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
-all:	$(NAME)
+.PHONY	: all clean fclean re
 
-$(NAME): $(OBJ)
+$(NAME)	: $(OBJ)
 			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
 			@echo $(GREEN)"OK!"$(DELCOL)
+			
+all		:$(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 			
-clean:
-			@$(RM) $(OBJ)
+clean	:
+		@$(RM) $(OBJ)
 
-fclean: clean
-			@$(RM) $(NAME)
+fclean	: clean
+		@$(RM) $(NAME)
 
-re:	fclean all
-
-.PHONY: all clean fclean re
+re		:	fclean all

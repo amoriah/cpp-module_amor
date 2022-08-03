@@ -3,41 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
+#    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/29 13:50:50 by amoriah           #+#    #+#              #
-#    Updated: 2022/07/29 13:50:51 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/03 17:31:23 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	Zombie
 
+SRC_DIR	=	src
+INC_DIR	=	inc
+OBJ_DIR	=	obj
+
 SRC		=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
-OBJ		=	${SRC:.cpp=.o}
-
-HEADER	=	Zombie.hpp
-
 CC		= 	g++
-
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
 
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+SRC		:=	$(addprefix $(SRC_DIR)/, $(SRC))
+OBJ		=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-.PHONY:	all clean fclean re
+GREEN	=	"\033[05;32m"
+DELCOL	=	"\033[0m"
 
-.cpp.o:		
-			@$(CC) $(FLAGS) -c $< -o $@
+.PHONY	: all clean fclean re
+
+$(NAME)	: $(OBJ)
+			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
+			@echo $(GREEN)"OK!"$(DELCOL)
+
+all		:	$(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 			
-all:	$(NAME)
-
-$(NAME):	$(OBJ) $(HEADER)
-			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
-
-clean:	
+clean	:
 			@$(RM) $(OBJ)
 
-fclean:		clean
+fclean	: clean
 			@$(RM) $(NAME)
 
-re:	fclean all
+re		:	fclean all

@@ -6,37 +6,37 @@
 #    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/02 18:56:41 by yono             ###   ########.fr        #
+#    Updated: 2022/08/03 17:30:22 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	megaphone
 
-SRC		=	megaphone.cpp
+SRC		=	$(wildcard *.cpp)
+OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
 
-OBJ		=	${SRC:.cpp=.o}
-
-CC		= 	g++
-
+CC		=	g++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
-
 RM		=	rm -f
 
-.PHONY:	all clean fclean re
+GREEN	=	"\033[05;32m"
+DELCOL	=	"\033[0m"
 
-.cpp.o:		
-			@$(CC) $(FLAGS) -c $< -o $@
+.PHONY	:	all clean fclean re
+
+$(NAME) : $(OBJ) 
+			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+			@echo $(GREEN)"OK!"$(DELCOL)
 			
-all:		$(NAME)
+all		:		$(NAME)
 
-$(NAME):	$(OBJ)
-			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+%.o 	: %.cpp
+	@$(CC) -c $< -o $@
 
-
-clean:	
-			@$(RM) $(OBJ)
-
-fclean:		clean
+clean 	: 
+		@$(RM) *.o
+		
+fclean	:		clean
 			@$(RM) $(NAME)
 
-re:	fclean all
+re		:	fclean all
