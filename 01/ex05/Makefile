@@ -5,31 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/02 18:56:50 by yono              #+#    #+#              #
-#    Updated: 2022/08/03 08:44:51 by yono             ###   ########.fr        #
+#    Created: 2022/08/03 12:42:56 by yono              #+#    #+#              #
+#    Updated: 2022/08/03 12:47:42 by yono             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sed_is_for_losers
+NAME	=	Harl
 
-SRC		=	main.cpp
+SRC		=	main.cpp Harl.cpp
 
 OBJ		=	${SRC:.cpp=.o}
 
+HEADER	=	Harl.hpp
+
 CC		= 	g++
 
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
-
 RM		=	rm -f
+
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 .PHONY:	all clean fclean re
 
 .cpp.o:		
 			@$(CC) $(FLAGS) -c $< -o $@
 			
-all:		$(NAME)
+all:	$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(HEADER)
 			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
 clean:	
