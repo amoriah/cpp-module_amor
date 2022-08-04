@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yono <yono@student.42.fr>                  +#+  +:+       +#+         #
+#    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/03 17:30:22 by yono             ###   ########.fr        #
+#    Updated: 2022/08/04 15:05:39 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,19 +24,19 @@ DELCOL	=	"\033[0m"
 
 .PHONY	:	all clean fclean re
 
-$(NAME) : $(OBJ) 
+$(NAME) :	$(OBJ) 
 			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 			@echo $(GREEN)"OK!"$(DELCOL)
 			
-all		:		$(NAME)
+all		:	$(NAME)
 
-%.o 	: %.cpp
-	@$(CC) -c $< -o $@
+%.o 	: 	%.cpp
+			@$(CC) -c $< -o $@
 
 clean 	: 
-		@$(RM) *.o
+			@$(RM) *.o
 		
-fclean	:		clean
+fclean	:	clean
 			@$(RM) $(NAME)
 
 re		:	fclean all
