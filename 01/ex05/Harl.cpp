@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:17:39 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 16:28:51 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/04 17:01:45 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void Harl::error()
 	std::cout << std::endl;
 }
 
-typedef void (Harl::*FP)();
+typedef void (Harl::*Fptr)();
 
 void Harl::complain(std::string level)
 {
 	Harl harl;
 
-	FP func[] = {	&Harl::debug,
+	Fptr Farr[] = {	&Harl::debug,
 					&Harl::info,
 					&Harl::warning,
 					&Harl::error};
@@ -56,7 +56,7 @@ void Harl::complain(std::string level)
 							"WARNING",
 							"ERROR"};
 
-	for(int i = 0; i < 4; i++)
-		if(level == array[i])
-			(harl.*func[i])();
+	for(int j = 0; j < 4; j++)
+		if(level == array[j])
+			(harl.*Farr[j])();
 }

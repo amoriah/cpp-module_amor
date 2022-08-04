@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:17:45 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 16:28:47 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/04 16:47:36 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ public:
 	Harl() { };
 	~Harl() { };
 	void complain(std::string level);
-	
 };
 
 #endif
