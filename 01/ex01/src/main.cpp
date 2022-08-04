@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 18:55:02 by yono              #+#    #+#             */
-/*   Updated: 2022/08/02 18:04:36 by yono             ###   ########.fr       */
+/*   Created: 2022/08/04 16:07:30 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:08:38 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main()
 {	
 	int	N;
 
-	N = 1;
+	N = 10;
 	Zombie *horde;
-	horde = zombieHorde(N, "name");
+	horde = zombieHorde(N, "ROB");
 	for (int i = 0; i < N; i++)
 		horde[i].announce();
 	delete [] horde;

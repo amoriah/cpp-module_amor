@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 12:44:08 by yono              #+#    #+#             */
-/*   Updated: 2022/08/03 15:25:44 by yono             ###   ########.fr       */
+/*   Created: 2022/08/04 16:17:45 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:28:47 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ private:
 	void info();
 	void warning();
 	void error();
-	std::string lvl[4];
+
 public:
-	Harl();
+	Harl() { };
 	~Harl() { };
-	void complain(std::string level);//вызывает четыре 
-	//функции-члена выше в зависимости от уровня, переданного в качестве параметра
+	void complain(std::string level);
+	
 };
 
 #endif

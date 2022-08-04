@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yono <yono@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 12:44:13 by yono              #+#    #+#             */
-/*   Updated: 2022/08/03 15:29:46 by yono             ###   ########.fr       */
+/*   Created: 2022/08/04 16:17:39 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:28:51 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-Harl::Harl()
-{
-	lvl[0] = "DEBUG";
-	lvl[1] = "INFO";
-	lvl[2] = "WARNING";
-	lvl[3] = "ERROR";
-}
 
 void Harl::debug()
 {
