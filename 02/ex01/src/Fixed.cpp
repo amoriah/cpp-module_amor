@@ -6,46 +6,49 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:14:07 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 17:14:08 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/06 16:20:52 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-//конструкторы
-Fixed::Fixed() {
+Fixed::Fixed() : _value(0)
+{
 	std::cout << "Default constructor called" << std::endl;
-	_value = 0;
 }
 
-Fixed::Fixed(const Fixed &a) {
+Fixed::Fixed(const Fixed &obj) 
+{
 	std::cout << "Copy constructor called" << std::endl;
-	*this = a;
+	*this = obj;
 }
 
-Fixed::Fixed(const int value) {
+Fixed::Fixed(const int value) 
+{
 	std::cout << "Int constructor called" << std::endl;
-	_value = value << _afterComma;
+	_value = value << _bit;
 }
 
-Fixed::Fixed(const float value) {
+Fixed::Fixed(const float value) 
+{
 	std::cout << "Float constructor called" << std::endl;
-	float pow = 1 << _afterComma;
+	float pow = 1 << _bit;
 	_value = roundf(value * pow);
 }
 
-Fixed::~Fixed() {
+Fixed::~Fixed() 
+{
 	std::cout << "Destructor called" << std::endl;
 }
 
-
-//перегрузки
-std::ostream &operator<<(std::ostream &out, const Fixed &obj) {
+std::ostream &operator<<(std::ostream &out, const Fixed &obj) 
+{
 	out << obj.toFloat();
 	return out;
 }
 
-Fixed &Fixed::operator=(const Fixed &other){
+Fixed &Fixed::operator=(const Fixed &other)
+{
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this == &other)
@@ -54,22 +57,24 @@ Fixed &Fixed::operator=(const Fixed &other){
 	return *this;
 }
 
-
-//методы
-int Fixed::getRawBits(void) const {
+int Fixed::getRawBits(void) const 
+{
 	std::cout << "getRawBits member function called" << std::endl;
 	return _value;
 }
 
-void Fixed::setRawBits(int const raw) {
+void Fixed::setRawBits(int const raw) 
+{
 	_value = raw;
 }
 
-float Fixed::toFloat(void) const {
-	float pow = 1 << _afterComma;
+float Fixed::toFloat(void) const 
+{
+	float pow = 1 << _bit;
 	return (_value / pow);
 }
 
-int Fixed::toInt(void) const {
-	return _value >> _afterComma;
+int Fixed::toInt(void) const 
+{
+	return _value >> _bit;
 }

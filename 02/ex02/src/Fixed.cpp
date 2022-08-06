@@ -6,46 +6,51 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:15:50 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 17:15:51 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/06 19:47:57 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-//конструкторы
-Fixed::Fixed() {
+//-----------------------------------------------конструкторы
+Fixed::Fixed() : _value(0)
+{
 	std::cout << "Default constructor called" << std::endl;
-	_value = 0;
 }
 
-Fixed::Fixed(const Fixed &a) {
+Fixed::Fixed(const Fixed &obj) 
+{
 	std::cout << "Copy constructor called" << std::endl;
-	*this = a;
+	*this = obj;
 }
 
-Fixed::Fixed(const int value) {
+Fixed::Fixed(const int value) 
+{
 	std::cout << "Int constructor called" << std::endl;
-	_value = value << _afterComma;
+	_value = value << _bit;
 }
 
-Fixed::Fixed(const float value) {
+Fixed::Fixed(const float value) 
+{
 	std::cout << "Float constructor called" << std::endl;
-	float pow = 1 << _afterComma;
+	float pow = 1 << _bit;
 	_value = roundf(value * pow);
 }
-
-Fixed::~Fixed() {
+//------------------------------------------диструктор
+Fixed::~Fixed() 
+{
 	std::cout << "Destructor called" << std::endl;
 }
 
-
-//перегрузки
-std::ostream &operator<<(std::ostream &out, const Fixed &obj) {
+//---------------------------------------перегрузки(конструктор копирования и побитового сдвига)
+std::ostream &operator<<(std::ostream &out, const Fixed &obj) 
+{
 	out << obj.toFloat();
 	return out;
 }
 
-Fixed &Fixed::operator=(const Fixed &other){
+Fixed &Fixed::operator=(const Fixed &other)
+{
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this == &other)
@@ -55,126 +60,146 @@ Fixed &Fixed::operator=(const Fixed &other){
 }
 
 
-//методы
-int Fixed::getRawBits(void) const {
+//--------------------------------------------------методы
+int Fixed::getRawBits(void) const 
+{
 	std::cout << "getRawBits member function called" << std::endl;
 	return _value;
 }
 
-void Fixed::setRawBits(int const raw) {
+void Fixed::setRawBits(int const raw) 
+{
 	_value = raw;
 }
 
-float Fixed::toFloat(void) const {
-	float pow = 1 << _afterComma;
+float Fixed::toFloat(void) const 
+{
+	float pow = 1 << _bit;
 	return (_value / pow);
 }
 
-int Fixed::toInt(void) const {
-	return _value >> _afterComma;
+int Fixed::toInt(void) const 
+{
+	return _value >> _bit;
 }
 
-
-//действия
-Fixed Fixed::operator+(const Fixed &other) const {
+//-----------------------------перегрузка операторов
+Fixed Fixed::operator+(const Fixed &other) const 
+{
 	Fixed res(toFloat() + other.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator-(const Fixed &other) const {
+Fixed Fixed::operator-(const Fixed &other) const 
+{
 	Fixed res(toFloat() - other.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator*(const Fixed &other) const {
+Fixed Fixed::operator*(const Fixed &other) const 
+{
 	Fixed res(toFloat() * other.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator/(const Fixed &other) const {
+Fixed Fixed::operator/(const Fixed &other) const 
+{
 	Fixed res(toFloat() / other.toFloat());
 	return res;
 }
-
-Fixed &Fixed::operator++() {
+//---------------------------------пре-инкремент
+Fixed &Fixed::operator++() 
+{
 	_value++;
 	return *this;
 }
-
-Fixed &Fixed::operator--() {
-	_value--;
-	return *this;
-}
-
-Fixed Fixed::operator++(int) {
+//---------------------------------пост-инкремент
+Fixed Fixed::operator++(int) 
+{
 	Fixed old(toFloat());
 	_value++;
 	return old;
 }
-
-Fixed Fixed::operator--(int) {
+//-----------------------------------пре-декримент
+Fixed &Fixed::operator--() 
+{
+	_value--;
+	return *this;
+}
+//---------------------------------пост-декримент
+Fixed Fixed::operator--(int) 
+{
 	Fixed old(toFloat());
 	_value--;
 	return old;
 }
 
-
-//сравнение
-bool Fixed::operator>(const Fixed &other) const {
+//-----------------------------------перегрузка операторов сравнения
+bool Fixed::operator>(const Fixed &other) const 
+{
 	if (_value > other.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator<(const Fixed &other) const {
+bool Fixed::operator<(const Fixed &other) const 
+{
 	if (_value < other.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator>=(const Fixed &other) const {
+bool Fixed::operator>=(const Fixed &other) const 
+{
 	if (_value >= other.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator<=(const Fixed &other) const {
+bool Fixed::operator<=(const Fixed &other) const 
+{
 	if (_value <= other.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator==(const Fixed &other) const {
+bool Fixed::operator==(const Fixed &other) const 
+{
 	if (_value == other.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator!=(const Fixed &other) const {
+bool Fixed::operator!=(const Fixed &other) const 
+{
 	if (_value != other.getRawBits())
 		return true;
 	return false;
 }
-
-Fixed &Fixed::min(Fixed &a, Fixed &b) {
+//вычисления
+Fixed &Fixed::min(Fixed &a, Fixed &b) 
+{
 	if (a < b)
 		return a;
 	return b;
 }
 
-Fixed &Fixed::max(Fixed &a, Fixed &b) {
+Fixed &Fixed::max(Fixed &a, Fixed &b) 
+{
 	if (a > b)
 		return a;
 	return b;
 }
 
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) 
+{
 	if (a < b)
 		return a;
 	return b;
 }	
 
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) 
+{
 	if (a > b)
 		return a;
 	return b;

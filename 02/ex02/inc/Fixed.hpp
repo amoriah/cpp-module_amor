@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:15:42 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 17:15:43 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/06 18:12:00 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 class Fixed {
 	private:
 		int _value;
-		static const int _afterComma = 8;
+		static const int _bit = 8;
 	public:
-		Fixed(void);
-		~Fixed(void);
-		Fixed(const Fixed &a);
+		Fixed();
+		~Fixed();
+		Fixed(const Fixed &obj);
 		Fixed(const int value);
 		Fixed(const float value);
 		Fixed &operator=(const Fixed &other);
@@ -40,11 +40,6 @@ class Fixed {
 		Fixed operator*(const Fixed &other) const;
 		Fixed operator/(const Fixed &other) const;
 
-		static Fixed &min(Fixed &a, Fixed &b);
-		static Fixed &max(Fixed &a, Fixed &b);
-		static const Fixed &min(const Fixed &a, const Fixed &b);		
-		static const Fixed &max(const Fixed &a, const Fixed &b);
-
 		// pre increment
 		Fixed	&operator++();
 		// pre decrement
@@ -53,11 +48,16 @@ class Fixed {
 		Fixed	operator++(int);
 		// post decrement
 		Fixed	operator--(int);
+		
+		static Fixed &min(Fixed &a, Fixed &b);
+		static const Fixed &min(const Fixed &a, const Fixed &b);		
+		static Fixed &max(Fixed &a, Fixed &b);
+		static const Fixed &max(const Fixed &a, const Fixed &b);
 
-		int getRawBits(void) const;
+		int getRawBits() const;
 		void setRawBits(int const raw);
-		float toFloat(void) const;
-		int toInt(void) const;
+		float toFloat() const;
+		int toInt() const;
 };
 	
 //прегрузка <<
