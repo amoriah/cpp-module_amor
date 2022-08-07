@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:15:50 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/06 19:47:57 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/07 10:08:39 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
-
 //---------------------------------------перегрузки(конструктор копирования и побитового сдвига)
-std::ostream &operator<<(std::ostream &out, const Fixed &obj) 
+std::ostream &operator<<(std::ostream &out, const Fixed &obj) //ostream класс для вывода в файл
 {
 	out << obj.toFloat();
 	return out;
@@ -56,10 +55,8 @@ Fixed &Fixed::operator=(const Fixed &other)
 	if (this == &other)
 		return *this;
 	_value = other.getRawBits();
-	return *this;
+	return *this;//.мы возвращаем скрытый указатель *this в функциях перегрузки операторов т.е. текущий объект класса Number
 }
-
-
 //--------------------------------------------------методы
 int Fixed::getRawBits(void) const 
 {
@@ -82,7 +79,6 @@ int Fixed::toInt(void) const
 {
 	return _value >> _bit;
 }
-
 //-----------------------------перегрузка операторов
 Fixed Fixed::operator+(const Fixed &other) const 
 {
@@ -133,7 +129,6 @@ Fixed Fixed::operator--(int)
 	_value--;
 	return old;
 }
-
 //-----------------------------------перегрузка операторов сравнения
 bool Fixed::operator>(const Fixed &other) const 
 {
@@ -176,7 +171,7 @@ bool Fixed::operator!=(const Fixed &other) const
 		return true;
 	return false;
 }
-//вычисления
+//----------------------------------------вычисления
 Fixed &Fixed::min(Fixed &a, Fixed &b) 
 {
 	if (a < b)

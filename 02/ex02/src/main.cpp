@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:15:54 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/06 19:43:35 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/07 10:12:13 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main( void ) {
 	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );//512 * 1293 = 2586
 	//"Int constructor called" - _value = 512
 	//"Float constructor called" - _value = 1292
 	//operator* called ?????

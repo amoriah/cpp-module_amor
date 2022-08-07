@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:07:22 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:07:23 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/07 16:09:45 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ public:
 	void		setInfo(int i, std::string value);
 	std::string retInfo(int i);
 };
+
 
 #endif

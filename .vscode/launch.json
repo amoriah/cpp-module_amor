@@ -8,7 +8,7 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "/home/yono/cpp-module_amor/00/ex01/PhoneBook",
+			"program": "/Users/amoriah/amor/cpp-module_amor/02/ex02/fix3",
 			"args": [],
 			"cwd": "${workspaceFolder}"
 		}

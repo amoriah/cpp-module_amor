@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:07:27 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:07:28 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/07 16:40:18 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	int		i;
 	int		count;
 	
-	PhoneBook();
+	PhoneBook()
 	~PhoneBook() { }
 	void	add_contact();
 	void	search_contact();

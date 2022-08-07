@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:12:48 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/04 17:12:49 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/07 10:05:45 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ_DIR	=	obj
 SRC		=	main.cpp Fixed.cpp
 
 CC		= 	g++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+FLAGS	=	-g -Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
 
 SRC		:=	$(addprefix $(SRC_DIR)/, $(SRC))
