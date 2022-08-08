@@ -79,7 +79,9 @@
 		"stack": "cpp",
 		"thread": "cpp",
 		"ranges": "cpp",
-		"stop_token": "cpp"
+		"stop_token": "cpp",
+		"__functional_03": "cpp",
+		"filesystem": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

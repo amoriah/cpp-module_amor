@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:10:32 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/07 18:44:59 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/08 20:28:37 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ DELCOL	=	"\033[0m"
 
 $(NAME)	: $(OBJ)
 			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
-			@echo $(GREEN)"OK!"$(DELCOL)
+			@echo $(GREEN)"OK! FragTrap is ready!"$(DELCOL)
 			
 all		:$(NAME)
 

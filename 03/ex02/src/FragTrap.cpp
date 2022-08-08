@@ -1,51 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/08 18:30:43 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/08 20:42:38 by amoriah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
-FragTrap::FragTrap(void)
-{
-	_name = "NonameFragTrap";
-	_hitpoints = 100;
-	_energypoints = 100;
-	_damages = 30;
-	std::cout << "FragTrap default constructor called" << std::endl;
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+		_hitPoints = 100;
+		_energyPoints = 100;
+		_attackDamage = 30;
+	std::cout << ULINE <<"Default ctor from FragTrap called"<< C_RESET << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
+FragTrap::FragTrap(const FragTrap &orig) : ClapTrap(orig)
 {
-	std::cout << "FragTrap copy constructor called" << std::endl;
-	*this = src;
-	return;
+		this->_hitPoints = orig._hitPoints;
+		this->_energyPoints = orig._energyPoints;
+		this->_attackDamage = orig._attackDamage;
+	std::cout << ULINE <<"Copy ctor from FragTrap called"<< C_RESET << std::endl;
 }
 
-FragTrap &FragTrap::operator=(FragTrap const &rhs)
+FragTrap	&FragTrap::operator=(const FragTrap &src)
 {
-	std::cout << "FragTrap assignation operator called" << std::endl;
-	if (this != &rhs)
-	{
-		this->_name = rhs._name;
-		this->_hitpoints = rhs._hitpoints;
-		this->_energypoints = rhs._energypoints;
-		this->_damages = rhs._damages;
-	}
+	this->_hitPoints = src._hitPoints;
+	this->_energyPoints = src._energyPoints;
+	this->_attackDamage = src._attackDamage;
+	std::cout << ULINE << "Assignment operator overload from FragTrap called"<< C_RESET << std::endl;
 	return (*this);
 }
 
-FragTrap::FragTrap(std::string const &name)
+FragTrap::~FragTrap()
 {
-	setName(name);
-	_hitpoints = 100;
-	_energypoints = 100;
-	_damages = 30;
-	std::cout << "FragTrap constructor called" << std::endl;
-	return;
+	std::cout << ULINE <<"dtor from FragTrap called"<< C_RESET << std::endl;
 }
 
-FragTrap::~FragTrap(void)
+void	FragTrap::guardGate()
 {
-	std::cout << "FragTrap destructor called" << std::endl;
+	std::cout << "FragTrap is now in Gate keeper mode\n";
+}
+
+void FragTrap::attack(std::string const &target)
+{
+	if (this->_energyPoints)
+	{
+		std::cout << this->_name << " the FragTrap's son attacks " << target;
+		std::cout << ",causing " << this->getDamages() << " points of damage!" << std::endl;
+		this->_energyPoints -= 1;
+		std::cout << this->_name << " has " << this->_energyPoints << " energyPoints left\n";
+	}
+	else
+		std::cout << this->_name << " lose energyPoints, hi/her cannot attack anymore" << std::endl;
 }
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << _name << ": Yo... give me five!!!" << std::endl
-			  << std::endl;
+	std::string str;
+	std::cout << "✋:" << std::endl;
+	std::cin >> str;
+	if (str == "5")
+		std::cout << "( ˘⌣˘)♡(˘⌣˘ )" << std::endl;
+	else
+		std::cout << "(╮°-°)╮┳━━┳ ( ╯°□°)╯ ┻━━┻" << std::endl;		
 }
