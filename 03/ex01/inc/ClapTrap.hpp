@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:57:51 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 16:23:16 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/08 19:17:53 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 //ClapTrap - "ловушка для хлопушек???"
 class ClapTrap
 {
-private:
+protected:
 	std::string _name;
 	unsigned int _hitPoints;//Очки попадания (10), отражают здоровье ClapTrap
 	unsigned int _energyPoints;//Очки энергии (10)
@@ -58,10 +58,10 @@ public:
 
 	void			setName(std::string name);
 	void			printStatus() const;
-	unsigned int	getDamages() const;
-	std::string		getName() const;
 	int				getHitPoints() const;
 	int				getEnergyPoints() const;
+	unsigned int	getDamages() const;
+	std::string		getName() const;
 
 	void attack(std::string const &target);//Когда ClapTrack атакует, он заставляет свою цель терять <attack damage> хит-пойнтов.
 	void takeDamage(unsigned int amount);//наносить повреждения

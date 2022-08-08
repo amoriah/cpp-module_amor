@@ -6,12 +6,12 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:49 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 18:24:37 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/08 19:29:33 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
+#include "ScavTrap.hpp"
 // int	retRandom(int range)
 // {
 // 	int	rand;
@@ -47,6 +47,7 @@ void	ClapTrap::printStatus() const
 int main(void)
 {
 	ClapTrap Gentle("Gentle😇");
+	ScavTrap Robot("Busya");
 	startGame(Gentle, "Toxic😈");
 	std::cout << std::endl;
 	std::cout << B_CYAN << "***************_GAME_OVER_***************" << C_RESET << std::endl;	

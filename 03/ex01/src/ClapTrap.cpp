@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:53 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 18:24:57 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:16:51 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,31 @@ ClapTrap::ClapTrap() :
 		_hitPoints(10),
 		_energyPoints(10),
 		_attackDamage(0) {
-	std::cout << ULINE <<"Default constructor called"<< C_RESET << std::endl;
+	std::cout << ULINE <<"Default constructor from ClapTrap called"<< C_RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const &name) :
 		 _hitPoints(10),
 		 _energyPoints(10),
 		 _attackDamage(0) {
-	std::cout << ULINE << "Constructor with name called " << C_RESET << std::endl;
+	std::cout << ULINE << "Constructor from ClapTrap with name called " << C_RESET << std::endl;
 	_name = name;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &orig)
 {
-	std::cout << ULINE << "Copy constructor called" << C_RESET << std::endl;
+	std::cout << ULINE << "Copy constructor from ClapTrap called" << C_RESET << std::endl;
 	*this = orig;
 }
 //--------------dtor----------------------------------------------------------
 ClapTrap::~ClapTrap()
 {
-	std::cout << ULINE << "Destructor called" << C_RESET << std::endl;
+	std::cout << ULINE << "Destructor from ClapTrap called" << C_RESET << std::endl;
 }
 //-------------overloads------------------------------------------------------
 ClapTrap &ClapTrap::operator=(ClapTrap const &dst)
 {
-	std::cout << ULINE << "Assignment operator overload called" << C_RESET << std::endl;
+	std::cout << ULINE << "Assignment operator overload from ClapTrap called" << C_RESET << std::endl;
 	if (this != &dst)
 	{
 		this->_name = dst._name;
@@ -88,7 +88,7 @@ void ClapTrap::attack(std::string const &target)
 {
 	if (this->_energyPoints)
 	{
-		std::cout << this->_name << " attacks " << target;
+		std::cout << this->_name << " the ClapTrap's son attacks " << target;
 		std::cout << ",causing " << this->getDamages() << " points of damage!" << std::endl;
 		this->_energyPoints -= 1;
 		std::cout << this->_name << " has " << this->_energyPoints << " energyPoints left\n";

@@ -6,17 +6,17 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:10:32 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/08 14:16:49 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/08 19:02:39 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	ClapTrap
+NAME	=	ScavTrap
 
 SRC_DIR	=	src
 INC_DIR	=	inc
 OBJ_DIR	=	obj
 
-SRC		=	main.cpp ClapTrap.cpp
+SRC		=	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 CC		= 	g++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -32,16 +32,19 @@ DELCOL	=	"\033[0m"
 .PHONY	: all clean fclean re
 
 $(NAME)	: $(OBJ)
-			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
-			@echo $(GREEN)"OK! ClapTrap is ready!"$(DELCOL)
+			$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
+			@echo $(GREEN)"OK! ScavTrap is ready!"$(DELCOL)
 			
 all		:$(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+			$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 			
 clean	:
 		@$(RM) $(OBJ)
+
+print :
+		@echo $(OBJ)
 
 fclean	: clean
 		@$(RM) $(NAME)
