@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:10:32 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/06 20:01:09 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/07 18:44:11 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_DIR	=	src
 INC_DIR	=	inc
 OBJ_DIR	=	obj
 
-SRC		=	main.cpp ClapTrap.cpp ScacTrap.cpp
+SRC		=	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 CC		= 	g++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
