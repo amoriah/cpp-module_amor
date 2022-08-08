@@ -6,33 +6,42 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:53 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 13:58:22 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/08 18:24:57 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-//-------------конструкторы
-ClapTrap::ClapTrap() : _name("NamelessTrap"),
-						   _hitPoints(10), _energyPoints(10), _attackDamage(0)
-{
-	std::cout << "Default constructor called" << std::endl;
+//-------------ctors----------------------------------------------------------
+ClapTrap::ClapTrap() : 
+		_name("NamelessTrap"),
+		_hitPoints(10),
+		_energyPoints(10),
+		_attackDamage(0) {
+	std::cout << ULINE <<"Default constructor called"<< C_RESET << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string const &name) :
+		 _hitPoints(10),
+		 _energyPoints(10),
+		 _attackDamage(0) {
+	std::cout << ULINE << "Constructor with name called " << C_RESET << std::endl;
+	_name = name;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &orig)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << ULINE << "Copy constructor called" << C_RESET << std::endl;
 	*this = orig;
 }
-
-ClapTrap::ClapTrap(std::string const &name) : _hitPoints(10), _energyPoints(10), _attackDamage(0)
+//--------------dtor----------------------------------------------------------
+ClapTrap::~ClapTrap()
 {
-	std::cout << "Constructor with name called " << std::endl;
-	_name = name;
+	std::cout << ULINE << "Destructor called" << C_RESET << std::endl;
 }
-//-------------перегрузки
+//-------------overloads------------------------------------------------------
 ClapTrap &ClapTrap::operator=(ClapTrap const &dst)
 {
-	std::cout << "Assignment operator overload called" << std::endl;
+	std::cout << ULINE << "Assignment operator overload called" << C_RESET << std::endl;
 	if (this != &dst)
 	{
 		this->_name = dst._name;
@@ -43,18 +52,12 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &dst)
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &o, ClapTrap const &trap)
+std::ostream &operator<<(std::ostream &out, ClapTrap const &trap)
 {
-	o << trap.getName();
-	return (o);
+	out << trap.getName();
+	return (out);
 }
-
-//----------диструктор
-ClapTrap::~ClapTrap()
-{
-	std::cout << "Destructor called" << std::endl;
-}
-//------------------методы
+//--------------methods-------------------------------------------------------
 std::string ClapTrap::getName() const
 {
 	return (this->_name);
@@ -70,63 +73,54 @@ unsigned int ClapTrap::getDamages() const
 {
 	return (_attackDamage);
 }
-/*
-пишем что собираемся аттаковать
-проверяем, не умер ли тот кого аттакуем
-еслм все норм то рандомно создаем число на которое хотим нанести урон,
-пишем что нанечли урон на это бисло
-записываем это рандомное число в(должны записать в перса которого аттакуем но почему то записываем в аттакующего)
 
-*/
+int	ClapTrap::getHitPoints() const
+{
+	return(_hitPoints);
+}
+
+int	ClapTrap::getEnergyPoints() const
+{
+	return(_energyPoints);
+}
+
 void ClapTrap::attack(std::string const &target)
 {
-	std::cout << _name << " the son of ClapTraps is going to attack... ";
-	if (_hitPoints == 0)//вначале 10
+	if (this->_energyPoints)
 	{
-		std::cout << _name << " ... oh, no! He is already dead!!! He cannot attack any more!!!" << std::endl;
-		return;
+		std::cout << this->_name << " attacks " << target;
+		std::cout << ",causing " << this->getDamages() << " points of damage!" << std::endl;
+		this->_energyPoints -= 1;
+		std::cout << this->_name << " has " << this->_energyPoints << " energyPoints left\n";
 	}
-	unsigned int new_damages = std::rand() % 10;//генерируем случайное число урона до 10
-	std::cout << this->_name << " attacked " << target << ", causing " << new_damages << " points of damage!" << std::endl
-			  << std::endl;
-	_attackDamage += new_damages;//перезаписываем то сл число в урон аттаки
+	else
+		std::cout << this->_name << " lose energyPoints, hi/her cannot attack anymore" << std::endl;
+	// int	damage;
+	// damage = retRandom(10);
+	// this->takeDamage(this->getDamages());
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-
-	unsigned int hitpoints_before = _hitPoints;//очки здоровья
-	if (amount == 0)
-		std::cout << _name << ": HA-HA-HA! Seriously, screw you!!!" << std::endl;
-	else if (_hitPoints == 0)
-		std::cout << _name << " is already dead!!!" << std::endl;
-	else if (amount >= hitpoints_before)
+	this->_hitPoints -= amount;
+	if (amount == 10 || this->_hitPoints <= 0)
 	{
-		_hitPoints = 0;
-		if (_energyPoints < 2)
-			std::cout << _name << " died after hard fighting... " << std::endl
-					  << "RIP " << std::endl
-					  << _name << std::endl;
-		else
-		{
-			std::cout << _name << "... He was almost dead... But, energy points filled his hit points for 10 points!" << std::endl
-					  << "He is ready to fight again!" << std::endl  << std::endl;
-			_hitPoints += 10;
-			_energyPoints -= 2;
-		}
+		std::cout << "Target killed!!!" << std::endl;
+		return;
 	}
-	else
-	{
-		_hitPoints -= amount;
-		std::cout << _name << " was damaged! His hit points decreased from " << hitpoints_before << " to " << _hitPoints << "! :(" << std::endl
-				  << std::endl;
-	}
+	std::cout << "Target lost " << amount << " hitPoints! ";
+	std::cout << this->getHitPoints() << " hitPoints left." << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "Repairing process started ..." << std::endl;
-	std::cout << "Hit points before : " << _hitPoints << std::endl;
-	_hitPoints += amount;
-	std::cout << "Hit points after : " << _hitPoints << "... Done!" << std::endl;
+	if (this->_energyPoints)
+	{
+		this->_hitPoints += amount;
+		this->_energyPoints -= 1;		
+		std::cout << this->_name << " was repaired by " << amount << " points\n";
+		std::cout << this->_name << " has " << this->_energyPoints << " energyPoints left\n";
+	}
+	else
+		std::cout << this->_name << " lose energyPoints, hi/her cannot reparied anymore" << std::endl;		
 }

@@ -1,65 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/07 18:59:49 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/08 18:24:37 by amoriah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-void ft_simulation1(ClapTrap &t1, ScavTrap &t2)
+// int	retRandom(int range)
+// {
+// 	int	rand;
+// 	srand(time(0));
+	
+// 	rand = std::rand() % range;
+// 	return(rand);
+// }
+
+void	startGame(ClapTrap Gentle, std::string enemy)
 {
-
-	unsigned int damage_before;
-	unsigned int new_damage;
-	int reapair;
-	srand(time(NULL));
-
+	Gentle.printStatus();
 	std::cout << std::endl;
-
-	damage_before = t1.getDamages();
-	t1.attack(t2.getName());
-	new_damage = t1.getDamages() - damage_before;
-	t2.takeDamage(new_damage);
-
-	reapair = std::rand() % 4;
-	if (t1.getDamages() > damage_before && reapair != 0)
-		t2.beRepaired(reapair);
-	else if (t1.getDamages() > damage_before)
-		std::cout << "Sorry, refuse to repair him :^(" << std::endl;
-	std::cout << std::endl;
+	std::cout << B_MAGENTA << "**************_GAME_STARTED_***************" << C_RESET << std::endl;
+	Gentle.attack(enemy);
+	Gentle.takeDamage(5);
+	if (!Gentle.getHitPoints())
+		return;
+	Gentle.beRepaired(21);
 }
 
-void ft_simulation2(ScavTrap &t1, ClapTrap &t2)
-{
-	unsigned int damage_before;
-	unsigned int new_damage;
-	int reapair;
-	srand(time(NULL));
-
+void	ClapTrap::printStatus() const
+{	
+	std::cout << B_CYAN << "*********_THE_CLAPTRAP_HAS_BEGUN_*********" << C_RESET << std::endl;
 	std::cout << std::endl;
-
-	damage_before = t1.getDamages();
-	t1.attack(t2.getName());
-	new_damage = t1.getDamages() - damage_before;
-	t2.takeDamage(new_damage);
-
-	reapair = std::rand() % 4;
-	if (t1.getDamages() > damage_before && reapair != 0)
-		t2.beRepaired(reapair);
-	else if (t1.getDamages() > damage_before)
-		std::cout << "Sorry, refuse to repair him :^(" << std::endl;
-	std::cout << std::endl;
+	std::cout << C_MAGENTA << "GAME_CHARACTERS:     " << std::setw(5) << C_RESET << std::endl;
+	std::cout << C_BLUE << "Name: " << C_RESET << this->getName() << std::endl;
+	std::cout << C_GREEN << "hitPoints: " << C_RESET << this->getHitPoints() << std::endl;
+	std::cout << C_YELLOW << "energyPoints: " << C_RESET << this->getEnergyPoints() << std::endl;
+	std::cout << C_RED << "attackDamage: " << C_RESET << this->getDamages() << std::endl;
 }
 
 int main(void)
 {
-	// {
-	// 	ScavTrap t2;
-	// }
-	srand(time(NULL)); // for rand()
-
-	ClapTrap t1("SuperTrap");
-	ScavTrap t2;
-	t2.setName("OrangeTrap");
-
-	ft_simulation1(t1, t2);
-	ft_simulation2(t2, t1);
-	t2.guardGate();
-
-	return (0);
+	ClapTrap Gentle("Gentle😇");
+	startGame(Gentle, "Toxic😈");
+	std::cout << std::endl;
+	std::cout << B_CYAN << "***************_GAME_OVER_***************" << C_RESET << std::endl;	
 }

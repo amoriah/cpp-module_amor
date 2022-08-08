@@ -6,48 +6,48 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:49 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 13:08:14 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/08 18:24:37 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-void ft_simulation(ClapTrap &t1, ClapTrap &t2)//super, puper
+// int	retRandom(int range)
+// {
+// 	int	rand;
+// 	srand(time(0));
+	
+// 	rand = std::rand() % range;
+// 	return(rand);
+// }
+
+void	startGame(ClapTrap Gentle, std::string enemy)
 {
-	unsigned int damage_before;
-	unsigned int new_damage;
-	int reapair;
-	srand(time(0));
-
+	Gentle.printStatus();
 	std::cout << std::endl;
+	std::cout << B_MAGENTA << "**************_GAME_STARTED_***************" << C_RESET << std::endl;
+	Gentle.attack(enemy);
+	Gentle.takeDamage(5);
+	if (!Gentle.getHitPoints())
+		return;
+	Gentle.beRepaired(21);
+}
 
-	damage_before = t1.getDamages();
-	t1.attack(t2.getName());//super attack puper
-	new_damage = t1.getDamages() - damage_before;
-	t2.takeDamage(new_damage);
-
-	reapair = std::rand() % 4;
-	if (t1.getDamages() > damage_before && reapair != 0)
-		t2.beRepaired(reapair);
-	else if (t1.getDamages() > damage_before)
-		std::cout << "Sorry, refuse to repair him :^(" << std::endl;
+void	ClapTrap::printStatus() const
+{	
+	std::cout << B_CYAN << "*********_THE_CLAPTRAP_HAS_BEGUN_*********" << C_RESET << std::endl;
 	std::cout << std::endl;
+	std::cout << C_MAGENTA << "GAME_CHARACTERS:     " << std::setw(5) << C_RESET << std::endl;
+	std::cout << C_BLUE << "Name: " << C_RESET << this->getName() << std::endl;
+	std::cout << C_GREEN << "hitPoints: " << C_RESET << this->getHitPoints() << std::endl;
+	std::cout << C_YELLOW << "energyPoints: " << C_RESET << this->getEnergyPoints() << std::endl;
+	std::cout << C_RED << "attackDamage: " << C_RESET << this->getDamages() << std::endl;
 }
 
 int main(void)
 {
-
-	ClapTrap t1("SuperTrap");
-	ClapTrap t2(t1);
-	t2.setName("PuperTrap");
-	srand(time(0)); // for rand()
-
-	// int turn = std::rand() % 2;//либо делится на 2 либо нет - 1 или 0
-	// std::cout << "turn = " << turn << std::endl;
-	if (turn)
-		ft_simulation(t1, t2);//
-	else
-		ft_simulation(t2, t1);
-
-	return (0);
+	ClapTrap Gentle("Gentle😇");
+	startGame(Gentle, "Toxic😈");
+	std::cout << std::endl;
+	std::cout << B_CYAN << "***************_GAME_OVER_***************" << C_RESET << std::endl;	
 }

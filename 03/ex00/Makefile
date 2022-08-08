@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:10:32 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/06 20:00:10 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/08 14:16:49 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ DELCOL	=	"\033[0m"
 
 $(NAME)	: $(OBJ)
 			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
-			@echo $(GREEN)"OK!"$(DELCOL)
+			@echo $(GREEN)"OK! ClapTrap is ready!"$(DELCOL)
 			
 all		:$(NAME)
 
