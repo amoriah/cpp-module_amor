@@ -6,19 +6,20 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:48:14 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/09 20:39:51 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/09 20:40:24 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animals.hpp"
+#include "Brain.hpp"
 
 Animal::Animal(){
 	type = "Animal";
 	std::cout << "Default constructor from Animal called.\n";
 }
 
-Animal::Animal(Animal const &src) {
-	*type = src;
+Animal::Animal(Animal const &src){
+	*this = src;
 	std::cout << "Copy constructor from Animal called.\n";
 }
 
@@ -43,7 +44,7 @@ void	Animal::setType(std::string type)
 	this->type = type;
 }
 
-void	Animal::makeSound() const
-{
-	std::cout << "what the animal says???\n"; 
-}
+// void	Animal::makeSound() const
+// {
+// 	std::cout << "what the animal says???\n"; 
+// }
