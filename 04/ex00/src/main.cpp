@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:58:04 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/09 15:53:45 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/09 19:50:55 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ int main()
 	std::cout << meta->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound(); 
 	j->makeSound();
 	meta->makeSound();
 	WrongAnimal *a = new WrongCat();
 	a->makeSound();
-
-	//в диструкторе???
 	delete meta;
 	delete j;
 	delete i;
