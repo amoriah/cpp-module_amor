@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:57:51 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 16:23:16 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/09 11:41:22 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # define B_CYAN    "\e[30;46m"
 
 
-//ClapTrap - "ловушка для хлопушек???"
 class ClapTrap
 {
 private:
@@ -63,13 +62,12 @@ public:
 	int				getHitPoints() const;
 	int				getEnergyPoints() const;
 
-	void attack(std::string const &target);//Когда ClapTrack атакует, он заставляет свою цель терять <attack damage> хит-пойнтов.
-	void takeDamage(unsigned int amount);//наносить повреждения
-	void beRepaired(unsigned int amount);//Когда Хлопушка ремонтирует себя, она получает <сумма> хит-поинтов обратно. Атака и ремонт стоят по 1 очку энергии. 
+	void attack(std::string const &target);
+	void takeDamage(unsigned int amount);
+	void beRepaired(unsigned int amount);
 };
 
 int	retRandom(int range);
 std::ostream &operator<<(std::ostream &out, ClapTrap const &trap);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:49 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 20:41:59 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/09 11:45:13 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 // 	return(rand);
 // }
 
-void	startGame(ClapTrap Gentle, std::string enemy)
+void	startGame(FragTrap obj, std::string enemy)
 {
-	Gentle.printStatus();
+	obj.printStatus();
 	std::cout << std::endl;
 	std::cout << B_MAGENTA << "**************_GAME_STARTED_***************" << C_RESET << std::endl;
-	Gentle.attack(enemy);
-	Gentle.takeDamage(5);
-	if (!Gentle.getHitPoints())
+	obj.attack(enemy);
+	obj.takeDamage(5);
+	if (!obj.getHitPoints())
 		return;
-	Gentle.beRepaired(21);
+	obj.beRepaired(1);
 }
 
 void	ClapTrap::printStatus() const
@@ -47,9 +47,9 @@ void	ClapTrap::printStatus() const
 int main(void)
 {
 	ClapTrap Gentle("Gentle😇");
-	FragTrap Robot("Busya");
-	Robot.highFivesGuys();
-	startGame(Gentle, "Toxic😈");
+	FragTrap SONE("SONE");
+	SONE.highFivesGuys();
+	startGame(SONE, "Toxic😈");
 	std::cout << std::endl;
 	std::cout << B_CYAN << "***************_GAME_OVER_***************" << C_RESET << std::endl;	
 }

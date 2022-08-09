@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 17:10:32 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/08 19:02:39 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/09 11:12:32 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,13 @@ DELCOL	=	"\033[0m"
 .PHONY	: all clean fclean re
 
 $(NAME)	: $(OBJ)
-			$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
+			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
 			@echo $(GREEN)"OK! ScavTrap is ready!"$(DELCOL)
 			
 all		:$(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-			$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 			
 clean	:
 		@$(RM) $(OBJ)
