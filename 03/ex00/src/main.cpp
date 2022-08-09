@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:59:49 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/08 18:24:37 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/09 10:57:14 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	startGame(ClapTrap Gentle, std::string enemy)
 	std::cout << std::endl;
 	std::cout << B_MAGENTA << "**************_GAME_STARTED_***************" << C_RESET << std::endl;
 	Gentle.attack(enemy);
-	Gentle.takeDamage(5);
+	Gentle.takeDamage(1);
 	if (!Gentle.getHitPoints())
 		return;
-	Gentle.beRepaired(21);
+	Gentle.beRepaired(0);
 }
 
 void	ClapTrap::printStatus() const
