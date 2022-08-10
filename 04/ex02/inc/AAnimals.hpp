@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animals.hpp                                        :+:      :+:    :+:   */
+/*   AAnimals.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:32:09 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/09 20:41:27 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/10 16:34:44 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,23 @@
 # include <string>
 # include "Brain.hpp"
 
-
-class Animal
+class AAnimal
 {
 protected:
 	std::string type;
 	
 public:
-	Animal();
-	virtual	~Animal();
-	Animal(Animal const &src);
-	Animal	&operator=(Animal const &dst);
+	AAnimal();
+	virtual	~AAnimal();
+	AAnimal(AAnimal const &src);
+	AAnimal	&operator=(AAnimal const &dst);
 		
 	std::string		getType() const;
 	virtual void	makeSound() const = 0;
 	void			setType(std::string type);
 };
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 private:
 	Brain *_brain;
@@ -68,7 +67,7 @@ public:
 	virtual void	makeSound() const;
 };
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 private:
 	Brain *_brain;

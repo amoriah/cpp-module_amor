@@ -6,11 +6,11 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:55:25 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/09 20:09:29 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/10 16:30:34 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animals.hpp"
+#include "AAnimals.hpp"
 #include "Brain.hpp"
 
 Cat::Cat(){
@@ -19,7 +19,7 @@ Cat::Cat(){
 	std::cout << "Default constructor from Cat called.\n";
 }
 
-Cat::Cat(Cat const &src) : Animal(src) {
+Cat::Cat(Cat const &src) : AAnimal(src) {
 	*this = src;
 	std::cout << "Copy constructor from Cat called.\n";
 }

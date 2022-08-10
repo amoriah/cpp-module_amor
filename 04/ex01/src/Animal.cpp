@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:48:14 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/09 20:39:25 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/10 17:44:47 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Animal::Animal(){
 }
 
 Animal::Animal(Animal const &src){
-	*type = src;
+	*this = src;
 	std::cout << "Copy constructor from Animal called.\n";
 }
 

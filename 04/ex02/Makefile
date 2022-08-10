@@ -6,7 +6,7 @@
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:57:11 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/09 20:37:07 by amoriah          ###   ########.fr        #
+#    Updated: 2022/08/10 16:29:55 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_DIR	=	src
 INC_DIR	=	inc
 OBJ_DIR	=	obj
 
-SRC		=	main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRC		=	main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 CC		= 	g++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
