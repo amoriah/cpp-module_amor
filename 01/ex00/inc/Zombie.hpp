@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:05:05 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 16:05:07 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/12 18:30:37 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,8 @@ private:
 	std::string name;
 
 public:
-	Zombie(std::string name)
-	{
-		this->name = name;
-	}
-	~Zombie()
-	{
+	Zombie(std::string name) {	this->name = name; }
+	~Zombie() {
 		std::cout << this->name << " is really died" << std::endl;
 	}
 	std::string	getName() const;
