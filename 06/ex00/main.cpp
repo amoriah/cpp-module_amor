@@ -6,13 +6,13 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 18:57:37 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/13 15:56:36 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/13 15:59:00 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include <cstring>
-# include <cstdlib>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
 #include <cmath>
 
 void	printChar(char c, double d)
