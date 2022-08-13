@@ -6,70 +6,74 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 18:57:37 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/12 19:39:31 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/13 15:56:36 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+# include <iostream>
+# include <cstring>
+# include <cstdlib>
+#include <cmath>
 
-struct types
+void	printChar(char c, double d)
 {
-	int			i = 0;
-	double 		d = 0;
-	float 		f = 0;
-	char 		c = 0;
-	int	spec_flag = 0;
-	double		_d = 0;
-};
-
-// void	printTypes(types *type)
-// {
-	
-// }
-
-int	check(std::string str, types *type)
-{
-	if (str == "nan" || str == "nanf" || str == "-inf" || str == "-inf" || str == "-inff" || str == "+inff")
-	{
-		type->spec_flag = 1;
-			return (1);
-	}
-	
+	if (std::isnan(d) || std::isinf(d))
+		std::cout << "char: impossible" << std::endl;	
+	else if (d < 32 || d > 126)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
 }
 
+void	printInt(int i, double d)
+{
+	if (std::isnan(d) || std::isinf(d))
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+}
+
+void	printFloat(int i, float f)
+{
+	if (f - i == 0)
+		std::cout << "float: " << f << ".0f" << std::endl;
+	else
+		std::cout << "float: " << f << "f" << std::endl;	
+}
+
+void	printDouble(int i, double d)
+{
+	if (d - i == 0)
+		std::cout << "double: " << d << ".0" << std::endl;
+	else
+		std::cout << "double: " << d << std::endl;	
+}
+
+//./convert 0
+//./convert nan
+//./convert 42.0f
 int	main(int ac, char **av)
 {
+	char	c = 0;
+	int		i = 0;
+	float	f = 0;
+	double	d = 0;
+	char *end;
+	
 	if (ac == 2)
 	{
 		std::string str;
-		types	*types;
 		str = av[1];
-		if (check(av, types) == 1)
-		{
-			types->d = std::strtod(str, 0);
-			if (std::isinf(types->d) || std::isnan(types->d))
-			{
-				std::cout << "char: impossible\n";
-				std::cout << "int: impossible\n";				
-			}
-			types->f = static_cast<float>(d);
-			
-			
-		}
+		d = std::strtod(av[1], &end);
+		c = static_cast<char>(d);
+		i = static_cast<int>(d);
+		f = static_cast<float>(d);
+		printChar(c, d);
+		printInt(i, d);
+		printFloat(i, f);
+		printDouble(i, d);
 		return (0);
 	}
 	std::cout << "Error: number of arguments should be 2.\n";
 	return (1);
 }
-
-	f = static_cast<float>(d);
-	if (f - i == 0)
-		std::cout << "float: " << f << ".0f" << std::endl;
-	else
-		std::cout << "float: " << f << "f" << std::endl;
-
-	if (d - i == 0)
-		std::cout << "double: " << d << ".0" << std::endl;
-	else
-		std::cout << "double: " << d << std::endl;

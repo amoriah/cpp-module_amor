@@ -8,8 +8,8 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "/Users/amoriah/amor/cpp-module_amor/06/ex00/a.out",
-			"args": ["3"],
+			"program": "/Users/amoriah/amor/cpp-module_amor/06/ex00/converter",
+			"args": ["0"],
 			"cwd": "${workspaceFolder}"
 		}
 	]
