@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:20:22 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/13 16:35:00 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/13 16:46:58 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	main()
 	std::cout << newData->name << std::endl;
 	std::cout << newData->hair << std::endl;
 	std::cout << newData->age << std::endl;
+	delete data;
 }
