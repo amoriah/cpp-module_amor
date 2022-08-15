@@ -5,39 +5,47 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/15 11:33:52 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/15 13:29:24 by amoriah          ###   ########.fr        #
+#    Created: 2022/08/15 14:42:08 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/15 16:02:40 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	easyfind
+NAME	=	span
 
-SRC		=	main.cpp
+SRC_DIR	=	src
+INC_DIR	=	inc
+OBJ_DIR	=	obj
 
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
+SRC		=	main.cpp Span.cpp
 
-CC		=	g++
-CFLAGS	=	-g -Wall -Wextra -Werror -std=c++98
+CC		= 	g++
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
+
+SRC		:=	$(addprefix $(SRC_DIR)/, $(SRC))
+OBJ		=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
-.PHONY	:	all clean fclean re
+.PHONY	: all clean fclean re
 
-all			:	$(NAME)
+$(NAME)	: $(OBJ)
+			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
+			@echo $(GREEN)"OK! span is ready!"$(DELCOL)
+			
+all		:$(NAME)
 
-$(NAME)	:	$(OBJ) 
-			@$(CC) $(CFLAGS) -o $(NAME)	$(OBJ)
-			@echo $(GREEN)"OK! easyfind is ready!"$(DELCOL)
-
-%.o		:	%.cpp 
-			@$(CC) $(FLAGS) -c $< -o $@
-
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+			
 clean	:
 		@$(RM) $(OBJ)
 
-fclean	:		clean
+fclean	: clean
 		@$(RM) $(NAME)
 
-re		:		fclean all
+re		:	fclean all
+
+

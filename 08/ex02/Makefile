@@ -5,39 +5,47 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/15 11:33:52 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/15 13:29:24 by amoriah          ###   ########.fr        #
+#    Created: 2022/08/15 16:18:48 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/15 17:35:33 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	easyfind
+NAME	=	mutantstack
+
+SRC_DIR	=	src
+INC_DIR	=	inc
+OBJ_DIR	=	obj
 
 SRC		=	main.cpp
 
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
-
-CC		=	g++
-CFLAGS	=	-g -Wall -Wextra -Werror -std=c++98
+CC		= 	g++
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
+
+SRC		:=	$(addprefix $(SRC_DIR)/, $(SRC))
+OBJ		=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
-.PHONY	:	all clean fclean re
+.PHONY	: all clean fclean re
 
-all			:	$(NAME)
+$(NAME)	: $(OBJ)
+			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
+			@echo $(GREEN)"OK! mutantstack is ready!"$(DELCOL)
+			
+all		:$(NAME)
 
-$(NAME)	:	$(OBJ) 
-			@$(CC) $(CFLAGS) -o $(NAME)	$(OBJ)
-			@echo $(GREEN)"OK! easyfind is ready!"$(DELCOL)
-
-%.o		:	%.cpp 
-			@$(CC) $(FLAGS) -c $< -o $@
-
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+			
 clean	:
 		@$(RM) $(OBJ)
 
-fclean	:		clean
+fclean	: clean
 		@$(RM) $(NAME)
 
-re		:		fclean all
+re		:	fclean all
+
+
