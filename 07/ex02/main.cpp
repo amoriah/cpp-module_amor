@@ -6,7 +6,7 @@
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 15:06:00 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/14 18:32:54 by amoriah          ###   ########.fr       */
+/*   Updated: 2022/08/15 10:15:53 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main()
 	Array<float> fArray(9);
 	Array<char> cArray(10);
 	
-	std::cout <<C_BLUE<<"   [ CHECK SIZES OF ARRAYS ]  " << C_RESET <<std::endl;
+	std::cout << C_BLUE << "   [ CHECK SIZES OF ARRAYS ]  " << C_RESET << std::endl;
 	int i = iArray.size();
 	int d = dArray.size();
 	int f = fArray.size();
@@ -37,25 +37,25 @@ int	main()
 	std::cout << "size float = "<< f << std::endl;
 	std::cout << "size char = "<< c << std::endl;
 	
-	std::cout <<C_RED<<"   [ CHECK INT ARRAY'S CONTENTS ]   " << C_RESET <<std::endl;
+	std::cout << C_RED <<"   [ CHECK INT ARRAY'S CONTENTS ]   " << C_RESET << std::endl;
 	for (int i = 0; i < iArray.size(); i++)
 	{
 		iArray[i] = i;
 		std::cout << "iArray[i] = " << iArray[i] << std::endl;
 	}
-	std::cout <<C_MAGENTA<<"   [ CHECK DOUBLE ARRAY'S CONTENTS ]   " << C_RESET <<std::endl;
+	std::cout << C_MAGENTA <<"   [ CHECK DOUBLE ARRAY'S CONTENTS ]   " << C_RESET << std::endl;
 	for (int i = 0; i < dArray.size(); i++)
 	{
 		dArray[i] = i + 0.5;
 		std::cout << "dArray[i] = " << dArray[i] << std::endl;
 	}	
-	std::cout <<C_GREEN<<"   [ CHECK FLOAT ARRAY'S CONTENTS ]   " << C_RESET <<std::endl;
+	std::cout << C_GREEN <<"   [ CHECK FLOAT ARRAY'S CONTENTS ]   " << C_RESET << std::endl;
 	for (int i = 0; i < fArray.size(); i++)
 	{
 		fArray[i] = i + 0.5;
 		std::cout << "fArray[i] = " << fArray[i] << "f" << std::endl;
 	}	
-	std::cout <<C_YELLOW<<"   [ CHECK CHAR ARRAY'S CONTENTS ]   " << C_RESET <<std::endl;
+	std::cout << C_YELLOW <<"   [ CHECK CHAR ARRAY'S CONTENTS ]   " << C_RESET << std::endl;
 	for (int i = 0; i < cArray.size(); i++)
 	{
 		cArray[i] = i + 'a';
