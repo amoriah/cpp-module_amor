@@ -5,38 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/04 15:05:39 by amoriah          ###   ########.fr        #
+#    Created: 2022/08/04 16:17:58 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/04 16:18:00 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	Harl
 
-SRC		=	$(wildcard *.cpp)
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
+SRC		=	main.cpp Harl.cpp
+OBJ		=	${SRC:.cpp=.o}
 
-CC		=	g++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+HEADER	=	Harl.hpp
+
+CC		= 	g++
 RM		=	rm -f
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
 .PHONY	:	all clean fclean re
 
-$(NAME) :	$(OBJ) 
-			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-			@echo $(GREEN)"OK!"$(DELCOL)
+.cpp.o	:		
+			@$(CC) $(FLAGS) -c $< -o $@
 			
 all		:	$(NAME)
 
-%.o 	: 	%.cpp
-			@$(CC) -c $< -o $@
+$(NAME)	:	$(OBJ) $(HEADER)
+			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+			@echo $(GREEN)"OK!"$(DELCOL)
 
-clean 	: 
-			@$(RM) *.o
-		
-fclean	:	clean
+clean	:	
+			@$(RM) $(OBJ)
+
+fclean	:		clean
 			@$(RM) $(NAME)
 
 re		:	fclean all

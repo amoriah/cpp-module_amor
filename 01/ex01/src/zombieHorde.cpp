@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/04 16:07:42 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:07:44 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#include "ZombieHorde.hpp"
 
-int	main(int ac, char **av)
+Zombie *zombieHorde(int N, std::string name)
 {
-	int			i;
-	size_t		j;
-
-	i = 0;
-	j = -1;
-	if (ac > 1)
+	if (N <= 0 || N >= 2147483647)
 	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
+		std::cout << "Error: wrong number of zombies" << std::endl;
+		return (NULL);
 	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	Zombie *horde;
+	int		i;
+
+	horde = new Zombie[N];
+	i = -1;
+	while (++i < N)
+		horde[i].setName(name);
+	return (horde);
 }

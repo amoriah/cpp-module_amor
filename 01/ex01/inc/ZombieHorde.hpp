@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/04 16:07:20 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:07:22 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#ifndef ZOMBIEHORDE_H
+# define ZOMBIEHORDE_H
 
-int	main(int ac, char **av)
+# include <string>
+# include <iostream>
+# include <iomanip>
+# include <cstdlib>
+
+class Zombie
 {
-	int			i;
-	size_t		j;
-
-	i = 0;
-	j = -1;
-	if (ac > 1)
+private:
+	std::string name;
+public:
+	Zombie() { };
+	~Zombie()
 	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
+		std::cout << this->name << " really died" << std::endl;
 	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-}
+	std::string	getName() const;
+	void		setName(std::string name);
+	void		announce() const;
+};
+
+Zombie *zombieHorde(int N, std::string name);
+
+#endif

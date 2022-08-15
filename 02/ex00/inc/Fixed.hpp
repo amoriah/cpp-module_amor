@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/04 17:13:40 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/06 15:45:23 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#ifndef FIX_H
+# define FIX_H
 
-int	main(int ac, char **av)
+# include <iostream>
+
+class Fixed 
 {
-	int			i;
-	size_t		j;
+private:
+	int _value;
+	static const int _bit = 8;
+	
+public:
+	Fixed();
+	Fixed(Fixed &obj);
+	Fixed &operator=(Fixed &other);
+	~Fixed();
+	int getRawBits();
+	void setRawBits(int const raw);
+};
 
-	i = 0;
-	j = -1;
-	if (ac > 1)
-	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-}
+#endif

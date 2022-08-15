@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/04 16:07:36 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/04 16:07:38 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#include "ZombieHorde.hpp"
 
-int	main(int ac, char **av)
+std::string	Zombie::getName() const
 {
-	int			i;
-	size_t		j;
+	return(this->name);
+}
 
-	i = 0;
-	j = -1;
-	if (ac > 1)
-	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+void	Zombie::announce() const
+{
+	std::cout << getName() << ": " << "BraiiiiiiiiiiinnnnzzzZ..." << std::endl;
+}
+
+void	Zombie::setName(std::string name)
+{
+	this->name = name;
 }

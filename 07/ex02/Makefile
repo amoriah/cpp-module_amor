@@ -5,37 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/04 15:05:39 by amoriah          ###   ########.fr        #
+#    Created: 2022/08/14 15:06:02 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/14 17:09:24 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	array
 
-SRC		=	$(wildcard *.cpp)
+SRC		=	main.cpp
+HEADER	=	Array.hpp
 OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
 
 CC		=	g++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM		=	rm -f
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I$(HEADER)
+rm		=	rm -f
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
 .PHONY	:	all clean fclean re
 
-$(NAME) :	$(OBJ) 
-			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-			@echo $(GREEN)"OK!"$(DELCOL)
-			
 all		:	$(NAME)
 
-%.o 	: 	%.cpp
-			@$(CC) -c $< -o $@
+$(NAME)	:	$(OBJ) $(HEADER)
+			@$(CC) $(CFLAGS) -o $(NAME)	$(OBJ)
+			@echo $(GREEN)"OK! array is ready!"$(DELCOL)
 
-clean 	: 
-			@$(RM) *.o
-		
+%.o		:	%.cpp $(HEADER)
+			@$(CC) $(FLAGS) -c $< -o $@
+
+clean	:
+			@$(RM) $(OBJ)
+
 fclean	:	clean
 			@$(RM) $(NAME)
 

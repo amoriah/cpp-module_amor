@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/13 16:39:23 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/13 17:06:02 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BASE_HPP
+# define BASE_HPP
+
+#include <ctime>
+#include <stdlib.h>
 #include <iostream>
-#include <cstring>
 
-int	main(int ac, char **av)
+class Base
 {
-	int			i;
-	size_t		j;
+public:
+	virtual ~Base(){};
+};
 
-	i = 0;
-	j = -1;
-	if (ac > 1)
-	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-}
+class A : public Base
+{
+};
+
+class B : public Base
+{
+};
+
+class C : public Base
+{
+};
+
+Base	*generate(void);
+void	identify(Base& p);
+void	identify(Base* p);
+
+#endif

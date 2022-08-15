@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/11 17:34:51 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/11 17:34:52 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int	main(int ac, char **av)
-{
-	int			i;
-	size_t		j;
+int	main(void) {
+	AForm f("formular", 10, 4);
+	Bureaucrat bob("Bob", 11);
 
-	i = 0;
-	j = -1;
-	if (ac > 1)
-	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	std::cout << f << std::endl;
+	std::cout << bob << std::endl;
+	
+	bob.signForm(f);
+	bob.upGrade();
+	bob.signForm(f);
+
+	std::cout << std::endl << f << std::endl;
+
+	return 0;
 }

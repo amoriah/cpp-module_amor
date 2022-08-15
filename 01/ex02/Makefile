@@ -5,37 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/04 15:05:39 by amoriah          ###   ########.fr        #
+#    Created: 2022/08/04 16:10:49 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/04 16:10:51 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	hi
 
-SRC		=	$(wildcard *.cpp)
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
+SRC		=	main.cpp
+OBJ		=	${SRC:.cpp=.o}
 
-CC		=	g++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+CC		= 	g++
 RM		=	rm -f
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
 .PHONY	:	all clean fclean re
 
-$(NAME) :	$(OBJ) 
-			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+$(NAME)	:	$(OBJ) 
+			@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 			@echo $(GREEN)"OK!"$(DELCOL)
 			
 all		:	$(NAME)
 
-%.o 	: 	%.cpp
-			@$(CC) -c $< -o $@
+.cpp.o	:		
+			@$(CC) $(FLAGS) -c $< -o $@
+			
+clean	:	
+			@$(RM) $(OBJ)
 
-clean 	: 
-			@$(RM) *.o
-		
 fclean	:	clean
 			@$(RM) $(NAME)
 

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:05:30 by amoriah           #+#    #+#             */
-/*   Updated: 2022/08/04 15:05:31 by amoriah          ###   ########.fr       */
+/*   Created: 2022/08/08 20:26:15 by amoriah           #+#    #+#             */
+/*   Updated: 2022/08/08 20:30:37 by amoriah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
 
-int	main(int ac, char **av)
+#ifndef FRAGTRAP_H
+# define FRAGTRAP_H
+
+# include "ClapTrap.hpp"
+
+class FragTrap : public ClapTrap
 {
-	int			i;
-	size_t		j;
+public:
+	~FragTrap();
+	FragTrap(std::string name);
+	FragTrap(const FragTrap &orig);
+	FragTrap	&operator=(const FragTrap &src);
+	
+	void	guardGate();
+	void	attack(std::string const &target);	
+	void	highFivesGuys(void);
+};
 
-	i = 0;
-	j = -1;
-	if (ac > 1)
-	{
-		while (++i < ac)
-		{
-			j = -1;
-			while (++j < strlen(av[i]))
-				std::cout << (char)toupper(av[i][j]);				
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-}
+#endif

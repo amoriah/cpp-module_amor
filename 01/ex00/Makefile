@@ -5,38 +5,44 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amoriah <amoriah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/25 11:51:18 by amoriah           #+#    #+#              #
-#    Updated: 2022/08/04 15:05:39 by amoriah          ###   ########.fr        #
+#    Created: 2022/07/29 13:50:50 by amoriah           #+#    #+#              #
+#    Updated: 2022/08/04 16:05:38 by amoriah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	Zombie
 
-SRC		=	$(wildcard *.cpp)
-OBJ		=	$(patsubst %.cpp, %.o, $(SRC))
+SRC_DIR	=	src
+INC_DIR	=	inc
+OBJ_DIR	=	obj
 
-CC		=	g++
+SRC		=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+
+CC		= 	g++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -f
+
+SRC		:=	$(addprefix $(SRC_DIR)/, $(SRC))
+OBJ		=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 GREEN	=	"\033[05;32m"
 DELCOL	=	"\033[0m"
 
-.PHONY	:	all clean fclean re
+.PHONY	: all clean fclean re
 
-$(NAME) :	$(OBJ) 
-			@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+$(NAME)	: $(OBJ)
+			@$(CC) $(FLAGS)  -o $(NAME) $(OBJ)
 			@echo $(GREEN)"OK!"$(DELCOL)
-			
+
 all		:	$(NAME)
 
-%.o 	: 	%.cpp
-			@$(CC) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+			@$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+			
+clean	:
+			@$(RM) $(OBJ)
 
-clean 	: 
-			@$(RM) *.o
-		
-fclean	:	clean
+fclean	: clean
 			@$(RM) $(NAME)
 
 re		:	fclean all
